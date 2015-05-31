@@ -1,10 +1,12 @@
 # best
 
-best encourages you to explore awesome code on Github. It's a simple command that clones the top starred repositories into your terminal. Use it if you're looking for inspiration, want to be more involved in open source, or are just curious about which repositories are most popular.
+best encourages you to explore awesome code on Github.
+
+It's a simple command that clones the top starred repositories into your terminal. Use it if you're looking for inspiration, want to be more involved in open source, or are just curious about which repositories are most popular.
 
 ## Installation and Usage
 ```bash
-(sudo) npm install best-gh
+(sudo) npm install -g best-gh
 
 best [-d/-w/-m/-y]
 
