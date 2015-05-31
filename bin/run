@@ -2,7 +2,7 @@
 
 var readline = require('readline');
 var Github = require('github');
-var util = require('./../util');
+var util = require('./../util/util');
 
 // Process user input
 var rl = readline.createInterface({
