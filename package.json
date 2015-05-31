@@ -10,5 +10,9 @@
   "dependencies": {
     "github": "^0.2.4",
     "moment": "^2.10.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danfang/best.git"
   }
 }
