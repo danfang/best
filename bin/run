@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+
+var readline = require('readline');
+var Github = require('github');
+var util = require('./../util');
+
+// Process user input
+var rl = readline.createInterface({
+	input: process.stdin,
+	output: process.stdout
+});
+
+// Make proper Github requests
+var github = new Github({
+    version: '3.0.0',
+    protocol: 'https',
+    timeout: 5000,
+    headers: { 'user-agent': 'bog-tool' }
+});
+
+var ALLOWED_ARGV = ['-d', '-w', '-m', '-y'];
+var argv = process.argv[2];
+
+if (argv && ALLOWED_ARGV.indexOf(argv) === -1) {
+	console.log('Invalid option: ' + argv);
+	console.log('Valid options are: ' + ALLOWED_ARGV);
+	process.exit();
+}
+
+var choice = util.processArgv(argv);
+
+github.search.repos({
+	q: 'created:>' + choice.date,
+	sort: 'stars',
+	order: 'desc',
+	per_page: 1
+}, function(err, res) {
+	if (err) return handleError(err);
+	var repo = res.items[0];
+	util.repoInfo(repo, choice);
+	rl.question('Clone it? (Y/n): ', function(answer) { 
+		if (!answer || answer === 'y') {
+			util.clone(repo);
+		} else {
+			console.log('Exiting');
+			process.exit();
+		}
+	})
+});

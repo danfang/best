@@ -1,0 +1,14 @@
+{
+  "name": "best-gh",
+  "version": "1.0.0",
+  "description": "Get the best repos on Github directly on your terminal",
+  "bin": {
+    "best": "./bin/run"
+  },
+  "author": "Daniel Fang <danfang@uw.edu>",
+  "license": "MIT",
+  "dependencies": {
+    "github": "^0.2.4",
+    "moment": "^2.10.3"
+  }
+}
